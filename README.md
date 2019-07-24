@@ -1,2 +1,2 @@
 # Tada
-Tada is Todo App in its in way
+Tada is Todo App in its own way
