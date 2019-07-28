@@ -5,7 +5,6 @@ import store from "./store";
 
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import { from } from 'array-flatten';
 
 ReactDOM.render(
 <Provider store={store}>

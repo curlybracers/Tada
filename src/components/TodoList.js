@@ -1,22 +1,26 @@
 import React from "react";
-import TodoCard from './TodoCard';
+import TodoCard from "./TodoCard";
+import TodoActionButton from "./TodoActionButton";
 
-
-const TodoList = ({ title }) => {
+const TodoList = ({ title, cards }) => {
     return (
         <div style={styles.container}>
             <h4>{title}</h4>
-            <TodoCard />
+            {cards.map(card => (
+            <TodoCard key={card.id} text={card.text} />
+            ))}
+            <TodoActionButton />
         </div>
-    )
+    );
 };
 
 const styles = {
     container: {
-        backgroundColor: "#ccc",
+        backgroundColor: "#dfe3e6",
         borderRadius: 3,
         width: 300,
-        padding: 8
+        padding: 8,
+        marginRight: 8
     }
 }
 
