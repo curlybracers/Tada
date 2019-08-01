@@ -29,6 +29,10 @@ const initialState = [
             {
                 id: 2,
                 text: "we will also make some little changes I forget in the last episode (link tags for robot font and icons,.."
+            },
+            {
+                id: 3,
+                text: "we will also make some little changes I forget in the last episode (link tags for robot font and icons,.."
             }
         ]
     }
