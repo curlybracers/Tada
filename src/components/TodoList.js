@@ -2,14 +2,14 @@ import React from "react";
 import TodoCard from "./TodoCard";
 import TodoActionButton from "./TodoActionButton";
 
-const TodoList = ({ title, cards }) => {
+const TodoList = ({ title, cards, listID }) => {
     return (
         <div style={styles.container}>
             <h4>{title}</h4>
             {cards.map(card => (
             <TodoCard key={card.id} text={card.text} />
             ))}
-            <TodoActionButton />
+            <TodoActionButton listID={listID} />
         </div>
     );
 };
