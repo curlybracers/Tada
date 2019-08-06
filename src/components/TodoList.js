@@ -1,16 +1,23 @@
 import React from "react";
 import TodoCard from "./TodoCard";
 import TodoActionButton from "./TodoActionButton";
+import { Droppable } from "react-beautiful-dnd";
 
 const TodoList = ({ title, cards, listID }) => {
     return (
-        <div style={styles.container}>
-            <h4>{title}</h4>
-            {cards.map(card => (
-            <TodoCard key={card.id} text={card.text} />
-            ))}
-            <TodoActionButton listID={listID} />
-        </div>
+        <Droppable droppableId={String(listID)}>
+            {provided => (
+                <div {...provided.droppableProps} ref={provided.innerRef} style={styles.container}>
+                    <h4>{title}</h4>
+                    {cards.map((card, index) => (
+                        <TodoCard key={card.id} index={index} text={card.text} id={card.id} />
+                    ))}
+                    <TodoActionButton listID={listID} />
+                    {provided.placeholder}
+                </div>
+            )}
+        
+        </Droppable>
     );
 };
 

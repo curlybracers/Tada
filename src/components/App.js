@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import TodoList from "./TodoList";
 import { connect } from "react-redux";
 import TodoActionButton from "./TodoActionButton";
+import { DragDropContext } from "react-beautiful-dnd;"
 
 class App extends Component {
-  render() {
 
+  onDragEnd = () => {
+    // TODO: reordering logic
+  }
+
+  render() {
     const {  lists } = this.props;
     return (
+      <DragDropContext onDragEnd={this.onDragEnd}>
       <div>
         <h2>Hello TODO</h2> 
         <div style={styles.listsContainer}>
@@ -17,6 +23,7 @@ class App extends Component {
           <TodoActionButton list />
         </div>
       </div>
+      </DragDropContext>
     );
   }
 }
