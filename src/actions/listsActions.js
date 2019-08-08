@@ -25,5 +25,5 @@ export const sort = (
             draggableId,
             type
         }
-    }
-}
+    };
+};

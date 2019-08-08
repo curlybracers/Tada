@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TodoList from "./TodoList";
 import { connect } from "react-redux";
 import TodoActionButton from "./TodoActionButton";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { sort } from "../actions";
 import styled from "styled-components";
 
@@ -14,9 +14,8 @@ const ListContainer = styled.div`
 
 
 class App extends Component {
-
   onDragEnd = result => {
-    const { destination, source, draggableId } = result;
+    const { destination, source, draggableId, type } = result;
 
     if (!destination) {
       return;
@@ -25,13 +24,14 @@ class App extends Component {
     this.props.dispatch(
       sort(
       source.droppableId,
-      destination.drappableId,
+      destination.droppableId,
       source.index,
       destination.index,
-      draggableId
+      draggableId,
+      type
     )
    );
-  }
+  };
 
   render() {
     const {  lists } = this.props;
@@ -39,12 +39,16 @@ class App extends Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
       <div>
         <h2>Hello TODO</h2> 
-        <ListContainer>
-        {lists.map(list => (
-        <TodoList listID={list.id} key={list.id} title={list.title} cards={list.cards} />
-        ))}  
-          <TodoActionButton list />
-          </ListContainer>
+        <Droppable droppableId="all-lists" direction="horizontal" type="list">
+          {provided => (
+              <ListContainer {...provided.droppableProps} ref={provided.innerRef}>
+                {lists.map((list, index) => (
+                  <TodoList listID={list.id} key={list.id} title={list.title} cards={list.cards} index={index} />
+                ))}
+                <TodoActionButton list />
+              </ListContainer>
+           )}
+        </Droppable>
       </div>
       </DragDropContext>
     );

@@ -7,14 +7,14 @@ import styled from "styled-components";
 
 const CardContainer = styled.div`
   margin-bottom: 8px;
-`
+`;
 
 const TodoCard = ({text, id, index}) => {
    return (
       <Draggable draggableId={String(id)} index={index}>
          {provided => (
             <CardContainer ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-            <Card style={styles.cardContainer}>
+            <Card>
                <CardContent>
                   <Typography gutterBottom>{text}</Typography>
                </CardContent>
@@ -25,10 +25,5 @@ const TodoCard = ({text, id, index}) => {
    );
 };
 
-const styles = {
-   cardContainer:  {
-      marginBottom: 8
-   }
-}
 
 export default TodoCard;
