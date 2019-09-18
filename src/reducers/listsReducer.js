@@ -5,12 +5,12 @@ let cardID = 6;
 
 const initialState = [
     {
-        title: "Last Episode",
+        title: "Programming Quote",
         id: `list-${0}`,
         cards: [
             {
                 id: `card-${0}`,
-                text: "we created a static list and a static card"
+                text: "Tell me and I'll forget. Show me and I may remember.Involve me and I will learn."
             },
             {
                 id: `card-${1}`,
@@ -19,12 +19,12 @@ const initialState = [
         ]
     },
     {
-        title: "This Episode",
+        title: "Challenges",
         id: `list-${1}`,
         cards: [
             {
                 id: `card-${2}`,
-                text: "we will create our first reducer"
+                text: "we created a static list and a static card"
             },
             {
                 id: `card-${3}`,
